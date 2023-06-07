@@ -9,6 +9,7 @@ import { Product } from './product.model';
 export class ProductComponent {
   model: Model = new Model();
   showTable = false;
+  darkColor = false;
 
   getProduct(key: number): Product | undefined {
     return this.model.getProduct(key);
@@ -19,6 +20,9 @@ export class ProductComponent {
   newProduct: Product = new Product();
   addProduct(p: Product) {
     this.model.saveProduct(p);
+  }
+  deleteProduct(key: number) {
+    this.model.deleteProduct(key);
   }
   submitForm() {
     this.addProduct(this.newProduct);
