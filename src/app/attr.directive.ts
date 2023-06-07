@@ -5,6 +5,8 @@ import {
   SimpleChanges,
   Output,
   EventEmitter,
+  HostBinding,
+  HostListener,
 } from '@angular/core';
 import { Product } from './product.model';
 @Directive({
@@ -26,14 +28,10 @@ export class PaAttrDirective {
   product: Product = new Product();
   @Output('pa-category')
   click = new EventEmitter<string>();
-  ngOnChanges(changes: SimpleChanges) {
-    const change = changes['bgClass'];
-    const classList = this.element.nativeElement.classList;
-    if (!change.isFirstChange() && classList.contains(change.previousValue)) {
-      classList.remove(change.previousValue);
-    }
-    if (!classList.contains(change.currentValue)) {
-      classList.add(change.currentValue);
+  @HostListener('click')
+  triggerCustomEvent() {
+    if (this.product != null) {
+      this.click.emit(this.product.category);
     }
   }
 }

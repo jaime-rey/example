@@ -5,8 +5,10 @@ import { ProductComponent } from './component';
 import { FormsModule } from '@angular/forms';
 import { PaAttrDirective } from './attr.directive';
 
+import { PaModel } from './twoway.directive';
+
 @NgModule({
-  declarations: [ProductComponent, PaAttrDirective],
+  declarations: [ProductComponent, PaAttrDirective, PaModel],
   imports: [BrowserModule, BrowserAnimationsModule, FormsModule],
   providers: [],
   bootstrap: [ProductComponent],
