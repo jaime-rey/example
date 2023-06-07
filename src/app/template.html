@@ -1,5 +1,7 @@
 <div class="p-2">
-  <div class="bg-info text-white p-2">Selected Product: {{product.value}}</div>
+  <div class="bg-info text-white p-2">
+    Selected Product: {{ selectedProduct ?? '(None)' }}
+  </div>
   <table class="table table-sm table-bordered" aria-describedby="products">
     <tr>
       <th>#</th>
@@ -9,12 +11,9 @@
     </tr>
     <tr
       *ngFor="let item of getProducts(); let i = index"
-      [class.bg-info]="product.value === item.name"
+      [class.bg-info]="getSelected(item)"
     >
-      <td
-        (focus)="product.value = ''"
-        (mouseover)="product.value = item.name ?? ''"
-      >
+      <td (focus)="item.name= ''" (mouseover)="selectedProduct=item.name">
         {{i + 1}}
       </td>
       <td>{{item.name}}</td>
@@ -25,10 +24,17 @@
   <div class="form-group">
     <label [htmlFor]="">Product Name</label>
     <input
-      #product
       class="form-control"
-      (input)="false"
-      (keyup.enter)="selectedProduct=product.value"
+      (input)="selectedProduct=$any($event).target.value"
+      [value]="selectedProduct ?? ''"
+    />
+  </div>
+  <div class="form-group">
+    <label [htmlFor]="">Product Name</label>
+    <input
+      class="form-control"
+      (input)="selectedProduct=$any($event).target.value"
+      [value]="selectedProduct ?? ''"
     />
   </div>
 </div>
