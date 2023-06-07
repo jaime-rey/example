@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Model } from './repository.model';
 import { Product } from './product.model';
-import { NgModel, ValidationErrors } from '@angular/forms';
+import { NgModel, ValidationErrors, NgForm } from '@angular/forms';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app',
@@ -27,15 +27,15 @@ export class ProductComponent {
     for (const errorName in errs) {
       switch (errorName) {
         case 'required':
-          messages.push(`You must enter a ${name}`);
+          messages.push(`You must enter a product ${name}`);
           break;
         case 'minlength':
-          messages.push(`A ${name} must be at least
+          messages.push(`A product ${name} must be at least
               ${errs['minlength'].requiredLength}
               characters`);
           break;
         case 'pattern':
-          messages.push(`The ${name} contains
+          messages.push(`The product ${name} contains
               illegal characters`);
           break;
       }
@@ -45,5 +45,15 @@ export class ProductComponent {
   getValidationMessages(state: NgModel, thingName?: string) {
     const thing: string = state.path?.[0] ?? thingName;
     return this.getMessages(state.errors, thing);
+  }
+  formSubmitted = false;
+  submitForm(form: NgForm) {
+    this.formSubmitted = true;
+    if (form.valid) {
+      this.addProduct(this.newProduct);
+      this.newProduct = new Product();
+      form.resetForm();
+      this.formSubmitted = false;
+    }
   }
 }
