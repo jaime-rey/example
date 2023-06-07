@@ -40,7 +40,9 @@
       <tbody pa-attr>
         <tr
           *ngFor="let item of getProducts(); let i = index"
-          [pa-attr]="getProducts().length<6?'table-success':'table-warning'"
+          [pa-attr]="getProducts().length < 6 ? 'table-success' : 'table-warning'"
+          [pa-product]="item"
+          (pa-category)="newProduct.category = $event"
         >
           <td>{{i + 1}}</td>
           <td>{{item.name}}</td>
