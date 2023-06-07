@@ -1,3 +1,5 @@
+/* eslint-disable @angular-eslint/directive-class-suffix */
+/* eslint-disable @angular-eslint/directive-selector */
 import {
   Directive,
   Input,
@@ -10,6 +12,7 @@ import { PaCellColor } from './cellColor.directive';
   selector: 'table',
 })
 export class PaCellColorSwitcher {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('paCellDarkColor')
   modelProperty: boolean | undefined;
 
