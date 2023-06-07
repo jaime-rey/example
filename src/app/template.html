@@ -24,6 +24,11 @@
   </table>
   <div class="form-group">
     <label [htmlFor]="">Product Name</label>
-    <input #product class="form-control" (input)="false" />
+    <input
+      #product
+      class="form-control"
+      (input)="false"
+      (keyup.enter)="selectedProduct=product.value"
+    />
   </div>
 </div>
