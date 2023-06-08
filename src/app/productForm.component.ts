@@ -9,10 +9,6 @@ import { Product } from './product.model';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'pa-productform',
   templateUrl: 'productForm.component.html',
-
-  styleUrls: ['productForm.component.css'],
-
-  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ProductFormComponent {
   newProduct: Product = new Product();
