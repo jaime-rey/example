@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Model } from './repository.model';
 import { Product } from './product.model';
-
+import { Subject } from 'rxjs';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'paProductTable',
@@ -22,23 +22,24 @@ export class ProductTableComponent {
     this.dataModel?.deleteProduct(key);
   }
   showTable = true;
-  // showTable: boolean = true;
-  // @ViewChildren(PaCellColor)
-  // viewChildren: QueryList<PaCellColor> | undefined;
-  // ngAfterViewInit() {
-  // this.viewChildren?.changes.subscribe(() => {
-  // this.updateViewChildren();
-  // });
-  // this.updateViewChildren();
-  // }
-  // private updateViewChildren() {
-  // setTimeout(() => {
-  // this.viewChildren?.forEach((child, index) => {
-  // child.setColor(index % 2 ? true : false);
-  // })
-  // }, 0);
-  // }
   taxRate = 0;
   categoryFilter: string | undefined;
   itemCount = 3;
+  selectMap = {
+    Watersports: 'stay dry',
+    Soccer: 'score goals',
+    other: 'have fun',
+  };
+  numberMap = {
+    '=1': 'one product',
+    '=2': 'two products',
+    other: '# products',
+  };
+  numbers: Subject<number> = new Subject<number>();
+  ngOnInit() {
+    let counter = 100;
+    setInterval(() => {
+      this.numbers.next((counter += 10));
+    }, 1000);
+  }
 }
