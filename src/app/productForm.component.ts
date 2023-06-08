@@ -1,13 +1,8 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Product } from './product.model';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'pa-productform',
+  selector: 'pa-product-form',
   templateUrl: 'productForm.component.html',
 })
 export class ProductFormComponent {
