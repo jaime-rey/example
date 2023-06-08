@@ -4,6 +4,7 @@ import { Product } from './product.model';
 export class Model {
   private dataSource: SimpleDataSource;
   private products: Product[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private locator = (p: Product, id: number | any) => p.id == id;
 
   constructor() {

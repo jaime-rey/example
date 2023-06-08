@@ -1,10 +1,12 @@
-<div class="container-fluid">
+<div class="container-fluid angularApp">
   <div class="row p-2">
-    <div class="col-4 p-2 bg-success text-white">
-      <paProductForm></paProductForm>
+    <div class="col-4 p-2 text-dark">
+      <pa-productform (paNewProduct)="addProduct($event)"></pa-productform>
     </div>
-    <div class="col p-2 bg-primary text-white">
-      <paProductTable></paProductTable>
+    <div class="col p-2">
+      <app-toggle-view>
+        <paProductTable [model]="model"></paProductTable
+      ></app-toggle-view>
     </div>
   </div>
 </div>

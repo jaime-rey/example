@@ -5,27 +5,12 @@ import { Product } from './product.model';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app',
   templateUrl: 'template.html',
+  styles: ['/deep/ div { border: 2px black solid; font-style:italic }'],
 })
 export class ProductComponent {
   model: Model = new Model();
-  showTable = false;
-  darkColor = false;
 
-  getProduct(key: number): Product | undefined {
-    return this.model.getProduct(key);
-  }
-  getProducts(): Product[] {
-    return this.model.getProducts();
-  }
-  newProduct: Product = new Product();
   addProduct(p: Product) {
     this.model.saveProduct(p);
-  }
-  deleteProduct(key: number) {
-    this.model.deleteProduct(key);
-  }
-  submitForm() {
-    this.addProduct(this.newProduct);
-    this.newProduct = new Product();
   }
 }
