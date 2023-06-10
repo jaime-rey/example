@@ -1,15 +1,16 @@
-import { SimpleDataSource } from './datasource.model';
 import { Product } from './product.model';
+import { SimpleDataSource } from './datasource.model';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Model {
-  private dataSource: SimpleDataSource;
   private products: Product[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private locator = (p: Product, id: number | any) => p.id == id;
 
-  constructor() {
-    this.dataSource = new SimpleDataSource();
+  constructor(private dataSource: SimpleDataSource) {
     this.products = new Array<Product>();
+
     this.dataSource.getData().forEach((p) => this.products.push(p));
   }
   getProducts(): Product[] {

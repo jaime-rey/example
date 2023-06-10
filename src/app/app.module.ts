@@ -16,12 +16,16 @@ import { ProductFormComponent } from './productForm.component';
 import { ToggleViewComponent } from './toggleView/toggle-view.component';
 import { AddTaxPipe } from './add-tax.pipe';
 
-import { LOCALE_ID } from '@angular/core';
-import localeFr from '@angular/common/locales/fr';
-import { registerLocaleData } from '@angular/common';
 import { PaCategoryFilterPipe } from './categoryFilter.pipe';
+import { PaDiscountDisplayComponent } from './discountDisplay.component';
+import { PaDiscountEditorComponent } from './discountEditor.component';
+import { DiscountService } from './discount.service';
+import { PaDiscountPipe } from './discount.pipe';
 
-registerLocaleData(localeFr);
+import { PaDiscountAmountDirective } from './discountAmount.directive';
+
+import { SimpleDataSource } from './datasource.model';
+import { Model } from './repository.model';
 @NgModule({
   declarations: [
     ProductComponent,
@@ -36,9 +40,13 @@ registerLocaleData(localeFr);
     ToggleViewComponent,
     AddTaxPipe,
     PaCategoryFilterPipe,
+    PaDiscountDisplayComponent,
+    PaDiscountEditorComponent,
+    PaDiscountPipe,
+    PaDiscountAmountDirective,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, FormsModule],
-
+  providers: [DiscountService, SimpleDataSource, Model],
   bootstrap: [ProductComponent],
 })
 export class AppModule {}
